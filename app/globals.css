@@ -1,0 +1,141 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+  overflow: hidden;
+}
+
+table, th, td {
+  border: 2px solid black;
+  font-weight: bolder;
+  font-size: large;
+  text-align: center;
+  color: black;
+}
+
+th {
+  padding:7px 8px;
+  text-transform: uppercase;
+}
+
+td {
+  padding: 7px 40px;
+}
+
+thead {
+  background-color: rgb(185, 185, 185);
+}
+
+table {
+  position: relative;
+  top: -3px;
+  left: 0px;
+}
+
+.maplibregl-popup-content {
+  font-size: 15px;
+  color: #000;
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.maplibregl-popup .maplibregl-popup-tip {
+  display: none !important;
+}
+
+.statusButton {
+  position: absolute;
+  top: 25px;
+  right: 20px;
+  padding: 10px 15px;
+  background-color: transparent;
+  color: black;
+  border: black 3px solid;
+  border-radius: 10px;
+  cursor: pointer;
+  text-align: center;
+  font-size: medium;
+  font-weight: bold;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.popupButton {
+  position: absolute;
+  top: 10px;
+  right: -55px;
+  padding: 10px 15px;
+  background-color: transparent;
+  color: black;
+  border: black 1px solid;
+  border-radius: 10px;
+  cursor: pointer;
+  text-align: center;
+  font-size: medium;
+  font-weight: bold;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.popup {
+  position: absolute;
+  top: 50%;
+  right: 4%;
+  transform: translate(0, -50%);
+  height: 90vh;
+  padding: 20px;
+  background-color: transparent;
+  border: 1px solid black;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.maplibregl-ctrl-compass {
+  transform: scale(5); /* Increase size — adjust as needed */
+  transform-origin: center center;
+  position: absolute;
+  bottom: 40px;
+  left: 50px;
+}
+
+.recenterButton {
+  position: absolute;
+  bottom: 130px;
+  left: 50px;
+  padding: 10px 10px;
+  background-color: transparent;
+  color: black;
+  border: black 3px solid;
+  border-radius: 10px;
+  cursor: pointer;
+  text-align: center;
+  font-size: medium;
+  font-weight: bold;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}

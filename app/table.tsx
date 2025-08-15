@@ -1,0 +1,70 @@
+function StatusTable() { 
+  return (
+    <table>
+      <thead>
+        <tr>
+          <th>Route</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>008</th>
+          <td>Arrived</td>
+        </tr>
+        <tr>
+          <th>023</th>
+          <td>Arrived</td>
+        </tr>
+        <tr>
+          <th>025</th>
+          <td>Arrived</td>
+        </tr>
+        <tr>
+          <th>027</th>
+          <td>Arrived</td>
+        </tr>
+        <tr>
+          <th>028</th>
+          <td>Arrived</td>
+        </tr>
+        <tr>
+          <th>029</th>
+          <td>Arrived</td>
+        </tr>
+        <tr>
+          <th>031</th>
+          <td>Arrived</td>
+        </tr>
+        <tr>
+          <th>033</th>
+          <td>Coming</td>
+        </tr>
+        <tr>
+          <th>041</th>
+          <td>Coming</td>
+        </tr>
+        <tr>
+          <th>043</th>
+          <td>Coming</td>
+        </tr>
+        <tr>
+          <th>044</th>
+          <td>Coming</td>
+        </tr>
+        <tr>
+          <th>048</th>
+          <td>Coming</td>
+        </tr>
+        <tr>
+          <th>049</th>
+          <td>Late</td>
+        </tr>
+      </tbody>
+    </table>
+  );
+}
+
+export default function Table() {
+    return <StatusTable />;
+}
