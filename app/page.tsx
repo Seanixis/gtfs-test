@@ -2,7 +2,7 @@
 
 import ClientMap from './clientmap';
 import Table from './table';
-import { use, useState } from 'react';
+import { useState } from 'react';
 
 function Test() {
   return (

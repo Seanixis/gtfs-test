@@ -85,17 +85,8 @@ const MapComponent = () => {
     element.style.display = "block";
     return element;
   };
-
-    const locaterMarker = () => {
-    const element = document.createElement("div");
-    element.style.backgroundImage = 'url("bus-icon.png")';
-    element.style.backgroundSize = "cover";
-    element.style.width = "40px";
-    element.style.height = "40px";
-    element.style.display = "block";
-    return element;
-  };
-
+  
+  
   return (
     <div
       ref={mapContainerRef}
