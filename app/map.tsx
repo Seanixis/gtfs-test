@@ -39,54 +39,6 @@ const MapComponent = () => {
         showZoom: false,
       }), "bottom-left");
 
-    const marker = new maplibregl.Marker() // you are here marker, update to include real time user location later
-      .setLngLat([174.736325, -36.737888])
-      .setPopup(new maplibregl.Popup({closeOnClick: false, closeButton: false, offset: [-1, 40]}).setText("You are here"))
-      .addTo(map);
-    marker.togglePopup();
-
-    const busMarker028 = new maplibregl.Marker({element: createCustomMarker("028")}) // test markers
-      .setLngLat([174.736702, -36.737781])
-      .setPopup(new maplibregl.Popup({closeOnClick: false, closeButton: false, offset: [-1, 51]}).setText("028"))
-      .addTo(map);
-    busMarker028.togglePopup();
-
-    const busMarker008 = new maplibregl.Marker({element: createCustomMarker("008")})
-      .setLngLat([174.736470, -36.737749])
-      .setPopup(new maplibregl.Popup({closeOnClick: false, closeButton: false, offset: [-1, 51]}).setText("008"))
-      .addTo(map);
-    busMarker008.togglePopup();
-
-    const busMarker023 = new maplibregl.Marker({element: createCustomMarker("023")})
-      .setLngLat([174.736461, -36.737650])
-      .setPopup(new maplibregl.Popup({closeOnClick: false, closeButton: false, offset: [-1, 51]}).setText("023"))
-      .addTo(map);
-    busMarker023.togglePopup();
-
-    const busMarker025 = new maplibregl.Marker({element: createCustomMarker("025")})
-      .setLngLat([174.736657, -36.737511])
-      .setPopup(new maplibregl.Popup({closeOnClick: false, closeButton: false, offset: [-1, 51]}).setText("025"))
-      .addTo(map);
-    busMarker025.togglePopup();
-
-    const busMarker027 = new maplibregl.Marker({element: createCustomMarker("027")})
-      .setLngLat([174.736598, -36.737695])
-      .setPopup(new maplibregl.Popup({closeOnClick: false, closeButton: false, offset: [-1, 51]}).setText("027"))
-      .addTo(map);
-    busMarker027.togglePopup();
-
-    const busMarker029 = new maplibregl.Marker({element: createCustomMarker("029")})
-      .setLngLat([174.736558, -36.737576])
-      .setPopup(new maplibregl.Popup({closeOnClick: false, closeButton: false, offset: [-1, 51]}).setText("029"))
-      .addTo(map);
-    busMarker029.togglePopup();
-
-    const busMarker031 = new maplibregl.Marker({element: createCustomMarker("031")})
-      .setLngLat([174.736858, -36.737768])
-      .setPopup(new maplibregl.Popup({closeOnClick: false, closeButton: false, offset: [-1, 51]}).setText("031"))
-      .addTo(map);
-    busMarker031.togglePopup();
-
     // clean up on component unmount
     return () => {
       map.remove();
