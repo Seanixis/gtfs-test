@@ -10,11 +10,11 @@ type Vehicle = {
   label?: string | null;
   lat: number | null;
   lon: number | null;
-  bearing?: number | null;
   timestamp?: number | null;
+  route_id?: string | null;
 };
 
-const POLL_MS = 15000;
+const POLL_MS = 1500;
 
 const MapComponent = () => {
   const mapContainerRef = useRef<HTMLDivElement>(null);
@@ -127,7 +127,7 @@ const MapComponent = () => {
 
     const incomingIds = new Set<string>();
     for (const v of vehicles) {
-      const id = String(v.vehicle_id ?? v.id ?? `${v.lat}_${v.lon}`);
+      const id = String(v.route_id ?? v.label ?? `${v.lat}_${v.lon}`);
       incomingIds.add(id);
       if (v.lat == null || v.lon == null) continue;
 
@@ -139,26 +139,21 @@ const MapComponent = () => {
         // update label text inside the custom element
         const el = existing.getElement();
         const labelEl = el.querySelector(".bus-label") as HTMLElement | null;
-        if (labelEl) labelEl.textContent = v.label ?? v.vehicle_id ?? "";
-
-        // rotate bus icon if bearing present
-        if (v.bearing != null) {
-          const img = el.querySelector("img");
-          if (img) (img as HTMLElement).style.transform = `rotate(${v.bearing}deg)`;
-        }
+        if (labelEl) labelEl.textContent = v.route_id ?? v.label ?? "";
 
       } else {
         // create a new marker
-        const el = createCustomMarker(v.label ?? v.vehicle_id ?? "");
+        const el = createCustomMarker(v.route_id ?? v.label ?? "");
 
         const marker = new maplibregl.Marker({ element: el })
           .setLngLat([v.lon, v.lat])
           .setPopup(new maplibregl.Popup({
             closeOnClick: false,
             closeButton: false,
-            offset: [0, -40]
-          }).setText(String(v.label ?? v.vehicle_id ?? "")))
+            offset: [-1, 53]
+          }).setText(String(v.route_id ?? v.label ?? "")))
           .addTo(map);
+          marker.togglePopup();
 
         markersRef.current[id] = marker;
       }
