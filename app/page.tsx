@@ -24,7 +24,9 @@ export default function Sigma() {
       )}
       {showPopup && (
         <div className="popup">
-          <Table />
+          <div className="popupTable">
+            <Table />
+          </div>
           <button className="popupButton" type="button" onClick={() => setShowPopup(false)}>✖</button>
         </div>
       )}

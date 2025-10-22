@@ -53,19 +53,8 @@ table {
   left: 0px;
 }
 
-.maplibregl-popup-content {
-  font-size: 15px;
-  color: #000;
-  background-color: transparent !important;
-  box-shadow: none !important;
-}
-
-.maplibregl-popup .maplibregl-popup-tip {
-  display: none !important;
-}
-
 .statusButton {
-  position: absolute;
+  position: fixed;
   top: 25px;
   right: 20px;
   padding: 10px 15px;
@@ -82,11 +71,11 @@ table {
 }
 
 .popupButton {
-  position: absolute;
+  position: fixed;
   top: 10px;
   right: -55px;
   padding: 10px 15px;
-  background-color: transparent;
+  background-color: rgb(255, 255, 255, 0.15);
   color: black;
   border: black 1px solid;
   border-radius: 10px;
@@ -99,12 +88,21 @@ table {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+.popupTable {
+  max-height: 90vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  -webkit-overflow-scrolling: touch;
+}
+
 .popup {
-  position: absolute;
-  top: 50%;
-  right: 4%;
-  transform: translate(0, -50%);
-  height: 90vh;
+  position: fixed;
+  top: 350px;
+  right: 67px;
+  transform: translateY(-50%);
+  height: auto;
   padding: 20px;
   background-color: transparent;
   border: 1px solid black;
@@ -113,18 +111,20 @@ table {
   z-index: 1000;
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
+  display: inline-block;
+  -webkit-overflow-scrolling: touch;
 }
 
 .maplibregl-ctrl-compass {
   transform: scale(5); /* Increase size — adjust as needed */
   transform-origin: center center;
-  position: absolute;
+  position: fixed;
   bottom: 40px;
   left: 50px;
 }
 
 .recenterButton {
-  position: absolute;
+  position: fixed;
   bottom: 130px;
   left: 50px;
   padding: 10px 10px;

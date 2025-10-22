@@ -15,7 +15,7 @@ type Vehicle = {
   route_id?: string | null;
 };
 
-const POLL_MS = 1500;
+const POLL_MS = 2000;
 
 const MapComponent = () => {
   const mapContainerRef = useRef<HTMLDivElement>(null);
