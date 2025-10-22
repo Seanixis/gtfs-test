@@ -1,11 +1,12 @@
 @import "tailwindcss";
 
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
 }
 
-@theme inline {
+@theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
@@ -118,9 +119,9 @@ table {
 .maplibregl-ctrl-compass {
   transform: scale(5); /* Increase size — adjust as needed */
   transform-origin: center center;
-  position: fixed;
-  bottom: 40px;
-  left: 50px;
+  position: absolute;
+  bottom: calc(40px + env(safe-area-inset-bottom, 0px));
+  left: calc(50px + env(safe-area-inset-left, 0px));
 }
 
 .recenterButton {
