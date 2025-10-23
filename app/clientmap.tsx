@@ -1,8 +1,12 @@
 'use client';
 
 import dynamic from "next/dynamic";
+import { forwardRef } from "react";
+
 const Map = dynamic(() => import("./map"), { ssr: false });
 
-export default function ClientMap() {
-    return <Map />;
-}
+const ClientMap = forwardRef((props, ref) => {
+    return <Map ref={ref} {...props} />;
+});
+
+export default ClientMap;

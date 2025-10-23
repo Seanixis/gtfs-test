@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useImperativeHandle, forwardRef, } from "react";
 import maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import type { Feature, FeatureCollection, Point } from "geojson";
@@ -17,9 +17,20 @@ type Vehicle = {
 
 const POLL_MS = 2000;
 
-const MapComponent = () => {
+  const MapComponent = forwardRef((_, ref) => {
   const mapContainerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<maplibregl.Map | null>(null);
+  const userLocation = useRef<[number, number] | null>(null);
+
+  useImperativeHandle(ref, () => ({
+    recenter: () => {
+      const map = mapRef.current;
+      if (!map) return;
+      if (userLocation.current) {
+        map.flyTo({ center: userLocation.current, zoom: 16, essential: true });
+      }
+    },
+  }));
 
   // init map
   useEffect(() => {
@@ -33,6 +44,19 @@ const MapComponent = () => {
       zoom: 19,
     });
     mapRef.current = map;
+
+    const userMarker = new maplibregl.Marker({ color: "#1E90FF" });
+
+    const watchId = navigator.geolocation.watchPosition(
+      (pos) => {
+        userLocation.current = [pos.coords.longitude, pos.coords.latitude];
+        userMarker.setLngLat(userLocation.current).addTo(map);
+      },
+      (err) => {
+        console.error("Geolocation error:", err);
+      },
+      { enableHighAccuracy: true, maximumAge: 500, timeout: 10000 }
+    );
 
     map.addControl(
       new maplibregl.NavigationControl({
@@ -168,6 +192,6 @@ const MapComponent = () => {
       style={{ width: "100%", height: "100dvh", top: "0px", left: "0px" }}
     />
   );
-};
+});
 
 export default MapComponent;

@@ -27,7 +27,7 @@ function getDistanceMeters(lat1: number, lon1: number, lat2: number, lon2: numbe
 }
 
 const ROUTES = [
-  "008", "013", "025", "028", "039", "032", "045", "049", "059", "061", "062", "065", "066",
+  "008", "013", "025", "028", "029", "032", "045", "049", "059", "061", "062", "065", "066",
 ];
 
 function StatusTable() {

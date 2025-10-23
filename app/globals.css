@@ -124,6 +124,10 @@ table {
   left: calc(50px + env(safe-area-inset-left, 0px));
 }
 
+.maplibregl-ctrl-geolocate {
+  display:none !important;
+}
+
 .recenterButton {
   position: fixed;
   bottom: 130px;

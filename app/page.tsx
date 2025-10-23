@@ -2,7 +2,7 @@
 
 import ClientMap from './clientmap';
 import Table from './table';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 
 function Test() {
   return (
@@ -15,10 +15,11 @@ function Test() {
 
 export default function Sigma() {
   const [showPopup, setShowPopup] = useState(false);
+  const mapRef = useRef<{ recenter: () => void } | null>(null);
 
   return (
     <section>
-      <ClientMap />
+      <ClientMap ref={mapRef} />
       {showPopup || (
         <button className="statusButton" type="button" onClick={() => setShowPopup(true)}>View Bus Status</button>
       )}
@@ -30,7 +31,7 @@ export default function Sigma() {
           <button className="popupButton" type="button" onClick={() => setShowPopup(false)}>✖</button>
         </div>
       )}
-      <button className="recenterButton" type="button"><img src="recenterIcon.png" style={{ width: "25px", height: "25px" }} /></button>
+      <button className="recenterButton" type="button" onClick={() => mapRef.current?.recenter()}><img src="recenterIcon.png" style={{ width: "25px", height: "25px" }} /></button>
     </section>
   );
 }
